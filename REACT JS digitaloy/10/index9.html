@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--Same id cant stay twice in React-->
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React Ref</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>  
+    <link rel="stylesheet" href="style.css">  
+  </head>
+  <body>
+        <div id="root"></div> 
+        <!--fat arrow function-->
+        <!--We change the value of state because the component we have is rerendered.-->
+        <!--If input text is a component-->
+        <!--<p>Total Edit clicked {this.state.totalEditCount} </p>-->
+        <!-- <p>Total Edit clicked {totalEditCount} </p>-->
+        <!--We cant change value of state but we can change value of props. The number of times we will change its value it will be rerendered-->
+        <script type="text/babel">
+              function Title(props) {
+        return(
+          <React.Fragment>
+            <h1>{props.title}</h1>
+            <p>Edited {props.count}</p>
+          </React.Fragment>
+        )
+      }
+        
+            class SportsNews extends React.Component{
+              constructor(props){
+                   super(props);
+                   this.state={
+                     
+                     isEditing:false,
+                     description:props.children
+                   };
+                   this.inputText=React.createRef();
+              }
+              edit(){
+               console.log(this.inputText);
+               this.setState({
+                         isEditing:true
+                       });
+              }
+              renderEdit(){
+                const isEditing =this.state.isEditing;
+                const props=this.props;
+                if(isEditing===true){
+                  return(
+                    <React.Fragment>
+                    <input defaultValue={props.children}
+                    ref={this.inputText} />
+                    <button onClick={()=>this.save()}>Save</button>
+                    </React.Fragment>
+                  )
+                }else{
+                  return (<p>{this.state.description}</p>)
+                }
+              }
+              delete(){
+                  alert ("delete button clicked");
+              }
+              save(){
+                
+              const inputValue=this.inputText.current.value;
+              this.setState({
+               isEditing:false,
+               description:inputValue
+              });
+              }
+              render(){
+                const props = this.props;
+                const totalEditCount=this.state.totalEditCount;
+                console.log("isEditing:",this.state.isEditing);
+                return (
+                  <div className="contnews">
+                  <h1>{props.title}</h1>
+                  {this.renderEdit()}
+                 
+                  <div className="action">
+                   <button className="edit" onClick={()=>this.edit()}>Edit</button> 
+                   <button className="delete" onClick={this.delete}>Delete</button>
+                   
+                  </div>
+                 
+                 
+                </div>
+                )
+              
+
+            }
+          }
+
+            
+            ReactDOM.render(    
+               <div className="container">
+               
+               <SportsNews title="newsone">UTD to sign Toby</SportsNews>
+               <SportsNews title="newtwo">Glory Glory Manchester United</SportsNews>
+              </div>,
+              document.getElementById('root')
+            );
+       </script>
+  </body>
+</html>

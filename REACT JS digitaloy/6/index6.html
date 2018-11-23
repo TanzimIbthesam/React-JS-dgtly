@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--When I am calling I am sending props to a component.When I keep a component within another component we can send props or an attribute.State is object of a content.If we change value of a component than depending on value of state component will be rendered.We can change state but we cant change component.State and props can be connected.The value of state we are changing.After changing the value can be passed as a props to a component.-->
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React State</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>  
+    <link rel="stylesheet" href="style.css">  
+  </head>
+  <body>
+        <div id="root"></div> 
+        <!--fat arrow function-->
+        <!--We change the value of state because the componenet we have is rerendered.-->
+        <!--If input text is a component-->
+        <!--<p>Total Edit clicked {this.state.totalEditCount} </p>-->
+        <!-- <p>Total Edit clicked {totalEditCount} </p>-->
+        <script type="text/babel">
+        function Title(props){
+          return(
+            <div>
+            <h1>{props.title}</h1>
+            <p>Edited{props.count}</p>
+            </div>
+          )
+        }
+            class SportsNews extends React.Component{
+              constructor(props){
+                   super(props);
+                   this.state={
+                     totalEditCount:0
+                   };
+              }
+              edit(){
+               alert("edit button clicked");
+               this.setState({
+                         totalEditCount:this.state.totalEditCount+1
+                       });
+              }
+              delete(){
+                  alert ("delete button clicked");
+              }
+              render(){
+                const props = this.props;
+               
+                const totalEditCount=this.state.totalEditCount;
+                return (
+                  <div className="contnews">
+                  <Title title={props.title} count={totalEditCount} />
+                 <p>{props.children}</p>
+                 
+                  <div className="action">
+                   <button className="edit" onClick={()=>this.edit()}>Edit</button> 
+                   <button className="delete" onClick={this.delete}>Delete</button>
+                   
+                  </div>
+                  {!!totalEditCount && (<p>Total Edit Clicked {totalEditCount}</p>)}
+                 
+                </div>
+                )
+              
+
+            }
+          }
+
+            
+            ReactDOM.render(    
+               <div className="container">
+               
+               <SportsNews title="newsone">UTD to sign Toby</SportsNews>
+               <SportsNews title="newtwo">Glory Glory Manchester United</SportsNews>
+              </div>,
+              document.getElementById('root')
+            );
+       </script>
+  </body>
+</html>

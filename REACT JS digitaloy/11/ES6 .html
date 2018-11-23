@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    //let b=2;
+    //b=3;
+    //alert("value of b "+b);
+    let paradisecity={
+        "dhaka":"20M",
+        "chittagong":"10M"
+        
+    }
+    // alert("Dhaka population"+paradisecity.dhaka);
+    //destructuring
+    // let dhaka=paradisecity.dhaka;
+    // alert("dhaka population"+dhaka);
+//    let {dhaka}= paradisecity;
+//    alert("dhaka population"+dhaka);
+    //  let{dhaka:dhaka,chittagong:jaap}=paradisecity; 
+    //  alert("chittagong population"+jaap); 
+    // fat arrow function
+    // function sum (a,b){
+    //     return a+b;
+    // }
+    // alert(sum(2,3));
+    // 
+    //constant fat sum
+    // const fatSum= function (a,b){
+    //     return a+b;
+    // }
+    // alert(fatSum(2,3));
+    // const fatSum= (a,b)=>a+b;
+    // alert(fatSum(2,3));
+    // const fatSum=a=>a*a;
+    // alert(fatSum(3));
+    // const fatSum=(a,b)=>{
+    //     a=a+2;
+    //     return a+b;
+    // };
+    // alert(fatSum(3,3));
+    const square =a=>a*a;
+    //foreach-It does not return any value.
+    const arrayList=[1,2,3];
+    let summation=0;
+    
+    // arrayList.forEach(function(item){
+    //     summation=summation+item;
+       
+    // })
+    // alert("summation: "+summation); 
+
+    // arrayList.forEach(item=>summation=summation+item)
+    // alert("summation: "+summation);
+    // const squaredArray=arrayList.map(a=>a*a);
+    // alert("square array"+squaredArray);
+
+
+    const squaredArray=arrayList.map(square);
+    alert("square array"+squaredArray);
+
+     </script>
+    
+    
+</body>
+</html>

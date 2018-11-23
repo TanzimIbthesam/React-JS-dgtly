@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--Same id cant stay twice in React-->
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React Ref</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>  
+    <link rel="stylesheet" href="style.css">  
+  </head>
+  <body>
+        <div id="root"></div> 
+        <!--fat arrow function-->
+        <!--We change the value of state because the componenet we have is rerendered.-->
+        <!--If input text is a component-->
+        <!--<p>Total Edit clicked {this.state.totalEditCount} </p>-->
+        <!-- <p>Total Edit clicked {totalEditCount} </p>-->
+        <script type="text/babel">
+        
+            class SportsNews extends React.Component{
+              constructor(props){
+                   super(props);
+                   this.state={
+                     totalEditCount:0
+                   };
+                   this.inputText=React.createRef();
+              }
+              edit(){
+               console.log(this.inputText);
+               this.setState({
+                         totalEditCount:this.state.totalEditCount+1
+                       });
+              }
+              delete(){
+                  alert ("delete button clicked");
+              }
+              render(){
+                const props = this.props;
+               
+                const totalEditCount=this.state.totalEditCount;
+                return (
+                  <div className="contnews">
+                  <h1 ref={this.inputText}>{props.title}</h1>
+                 <p>{props.children}</p>
+                 
+                  <div className="action">
+                   <button className="edit" onClick={()=>this.edit()}>Edit</button> 
+                   <button className="delete" onClick={this.delete}>Delete</button>
+                   
+                  </div>
+                 
+                 
+                </div>
+                )
+              
+
+            }
+          }
+
+            
+            ReactDOM.render(    
+               <div className="container">
+               
+               <SportsNews title="newsone">UTD to sign Toby</SportsNews>
+               <SportsNews title="newtwo">Glory Glory Manchester United</SportsNews>
+              </div>,
+              document.getElementById('root')
+            );
+       </script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <!--REACtDOM.render used once in a React project. The job of Babel JS is first parameter which is JS syntax which is usually a react component.NEW JS sysntax is converted to an old Javascript syntax.The JS syntax is a react component.With React.The job of React JS is to generate html.With React.create element we prepare a component.React prepares its own component which is nothing but a HTML.each compnents function is to generate html n css. -->
+    <!--React DOM renders function first arguement is printed to root id.Its job is to print the first element into second.-->
+    <!--Babels function is to convert weird component into React JS-->
+
+    <div id="root"></div>
+    <script type="text/babel">
+
+      ReactDOM.render(
+        <h1>Hello, world!</h1>,
+        document.getElementById('root')
+      );
+
+    </script>
+    
+  </body>
+</html>
